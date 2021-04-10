@@ -3,7 +3,7 @@ import { getCustomRepository } from "typeorm";
 import { User } from "../models/User";
 import { UserRepository } from "../repositories/UsersRepository";
 
-class UserControlller{
+class UserController{
     async create(request: Request,response:Response){
         const {name,email}=request.body;
 
@@ -31,4 +31,4 @@ class UserControlller{
     }
 }
 
-export { UserControlller };
+export { UserController };

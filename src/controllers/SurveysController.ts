@@ -2,29 +2,38 @@ import {Request,Response} from "express";
 import { getCustomRepository } from "typeorm";
 import {SurveyRepository} from "../repositories/SurveysRepository";
 
-class SurveysController{
- async create(request:Request,response:Response){
-     const {title,description}=request.body;
+class SurveyController{
 
-     const surveysRepository=getCustomRepository(SurveyRepository);
+    async create(request: Request, response: Response) {
+        // Desestruturação pois sabe que aqui está recebendo apenas o nome e email do JSON requisitado
+        const { title, description } = request.body; // Controller recebe o título e descrição do body da requisição HTTP
 
-     const survey= surveysRepository.create({
-         title,
-         description
+        // Para receber as funções necessárias
+        const surveysRepository = getCustomRepository(SurveyRepository);
 
-     });
-     await surveysRepository.save(survey);
+        // Criar o survey passando o que foi recebido
+        const survey = surveysRepository.create({
+            title,
+            description
+        })
 
-     return response.status(201).json(survey);
- }
-    
- async show(request:Request,response:Response){
-    const surveysRepository=getCustomRepository(SurveyRepository);
+        // Salvar o survey no banco de dados
+        await surveysRepository.save(survey);
 
-    const all= await surveysRepository.find();
-    return response.json(all);
- }
+        // 201 é o código para informar quando se cria algo corretamente no HTTP
+        return response.status(201).json(survey); // Retorna o código e o que foi criado
+
     }
 
+    // Controller para criar a rota que retorna todas as pesquisas (surveys)
+    async show(request: Request, response: Response){
+        const surveysRepository = getCustomRepository(SurveyRepository);
 
-export {SurveysController}
+        const all = await surveysRepository.find(); // .find() é o método para listar todos os registros da tabela
+
+        return response.json(all);
+    }
+
+}
+
+export { SurveyController };
