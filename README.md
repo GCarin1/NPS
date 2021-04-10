@@ -30,7 +30,7 @@ Obs: Banco de dados é o Sqlite3, caso queira alterar, configure o arquivo ormco
 
 ```bash
 - git clone https://github.com/GCarin1/NPS.git
-- cd nps-api
+- cd NPS
 ```
 
 Instalando dependências
