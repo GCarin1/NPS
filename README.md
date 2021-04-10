@@ -29,7 +29,7 @@ Essas instruções vão te levar a uma cópia do projeto rodando em sua máquina
 Obs: Banco de dados é o Sqlite3, caso queira alterar, configure o arquivo ormconfig.json para seu banco de dados específico (Campo "database" é o nome do banco de dados no SGBD, neste projeto é local).
 
 ```bash
-- git clone https://github.com/Lucas-Angelo/nps-api.git
+- git clone https://github.com/GCarin1/NPS.git
 - cd nps-api
 ```
 
